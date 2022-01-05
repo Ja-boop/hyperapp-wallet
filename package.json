@@ -4,7 +4,15 @@
   "description": "Application that has the function of connecting with several Stellar Wallets in addition to one created by ourselves.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/index.html -p 8081",
+    "build": "parcel build",
+    "test:ui:dev": "cypress open",
+    "test:ui:headless": "cypress run",
+    "prettier:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json\"",
+    "prettier:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json\"",
+    "eslint:check": "eslint \"src/**/*.{js,jsx,ts,tsx,json\"",
+    "eslint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json\"",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -15,5 +23,22 @@
   "bugs": {
     "url": "https://github.com/Ja-boop/hyperapp-wallet/issues"
   },
-  "homepage": "https://github.com/Ja-boop/hyperapp-wallet#readme"
+  "homepage": "https://github.com/Ja-boop/hyperapp-wallet#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "cypress": "^9.2.0",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "parcel": "^2.1.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "hyperapp": "^2.0.20",
+    "hyperlit": "^0.3.6"
+  }
 }
