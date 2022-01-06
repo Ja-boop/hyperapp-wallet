@@ -1,18 +1,18 @@
-import { app, h, text } from "hyperapp";
+import { app } from "hyperapp";
 import html from "hyperlit";
-import withRouter, { effects } from "@mrbarrysoftware/hyperapp-router";
+import withRouter from "@mrbarrysoftware/hyperapp-router";
+import IState from "./ui/state/state";
 
-const GoToHref = (state: any, { href }: any) => [
-  state,
-  effects.Navigate({ href }), //where href is a string, like `/route/path/here`
-];
+const baseState: IState = {
+  viewFn: () => html`<div></div>`,
+};
 
 withRouter(app)({
   router: {
     disableAnchorCapture: true,
     routes: {
       "/": {
-        OnEnter: (state: any) => ({
+        OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => {
             return html`<div>
@@ -26,7 +26,7 @@ withRouter(app)({
         }),
       },
       "/xbull": {
-        OnEnter: (state: any) => ({
+        OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => {
             return html`<div>XBULL</div>`;
@@ -34,13 +34,13 @@ withRouter(app)({
         }),
       },
       "/albedo": {
-        OnEnter: (state: any) => ({
+        OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => html`<div>ALBEDO</div>`,
         }),
       },
       "/freighter": {
-        OnEnter: (state: any) => ({
+        OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => html`<div>FREIGHTER</div>`,
         }),
@@ -48,9 +48,8 @@ withRouter(app)({
     },
   },
 
-  init: { viewFn: () => html`<div></div>` },
-
-  view: (state: any) => state.viewFn(),
+  init: baseState,
+  view: (state: IState) => state.viewFn(),
 
   node: document.getElementById("app"),
 });
