@@ -9,6 +9,7 @@ const GoToHref = (state: any, { href }: any) => [
 
 withRouter(app)({
   router: {
+    disableAnchorCapture: true,
     routes: {
       "/": {
         OnEnter: (state: any) => ({
