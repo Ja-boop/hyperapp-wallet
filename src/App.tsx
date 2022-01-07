@@ -2,6 +2,7 @@ import { app } from "hyperapp";
 import html from "hyperlit";
 import withRouter from "@mrbarrysoftware/hyperapp-router";
 import IState from "./ui/state/state";
+import components from "./ui/components/component";
 
 const baseState: IState = {
   viewFn: () => html`<div></div>`,
@@ -15,13 +16,7 @@ withRouter(app)({
         OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => {
-            return html`<div>
-              <ul>
-                <button><a href="/xbull">Connect with xBull</a></button>
-                <button><a href="/albedo">Connect with Albedo</a></button>
-                <button><a href="/freighter">Connect with Freighter</a></button>
-              </ul>
-            </div>`;
+            return components.homePage;
           },
         }),
       },
@@ -29,20 +24,24 @@ withRouter(app)({
         OnEnter: (state: IState) => ({
           ...state,
           viewFn: () => {
-            return html`<div>XBULL</div>`;
+            return components.xbullPage;
           },
         }),
       },
       "/albedo": {
         OnEnter: (state: IState) => ({
           ...state,
-          viewFn: () => html`<div>ALBEDO</div>`,
+          viewFn: () => {
+            return components.albedoPage;
+          },
         }),
       },
       "/freighter": {
         OnEnter: (state: IState) => ({
           ...state,
-          viewFn: () => html`<div>FREIGHTER</div>`,
+          viewFn: () => {
+            return components.freighterPage;
+          },
         }),
       },
     },
