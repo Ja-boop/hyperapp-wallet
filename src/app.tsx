@@ -1,56 +1,21 @@
 import { app } from "hyperapp";
 import html from "hyperlit";
-import withRouter from "@mrbarrysoftware/hyperapp-router";
 import IState from "./ui/state/state";
-import components from "./ui/components/component";
-
 const baseState: IState = {
-  viewFn: () => html`<div></div>`,
+  publicKey: "",
+  wallet: "",
 };
-
-withRouter(app)({
-  router: {
-    disableAnchorCapture: true,
-    routes: {
-      "/": {
-        OnEnter: (state: IState) => ({
-          ...state,
-          viewFn: () => {
-            return components.homePage;
-          },
-        }),
-      },
-      "/xbull": {
-        OnEnter: (state: IState) => ({
-          ...state,
-          viewFn: () => {
-            return components.xbullPage;
-          },
-        }),
-      },
-      "/albedo": {
-        OnEnter: (state: IState) => ({
-          ...state,
-          viewFn: () => {
-            return components.albedoPage;
-          },
-        }),
-      },
-      "/freighter": {
-        OnEnter: (state: IState) => ({
-          ...state,
-          viewFn: () => {
-            return components.freighterPage;
-          },
-        }),
-      },
-    },
-  },
-
+app({
   init: baseState,
-  view: (state: IState) => state.viewFn(),
-
-  node: document.getElementById("app"),
+  view: (state: IState) =>
+    html`<div>
+      ${state.wallet
+        ? html`<div>hola mundo</div>`
+        : html`<ul>
+            <button>Connect with Albedo</button
+            ><button>Connect with Freighter</button
+            ><button>Connect with xBull</button>
+          </ul>`}
+    </div>`,
+  node: document.getElementById("app")!,
 });
-
-//comment to be able to make a new PR
