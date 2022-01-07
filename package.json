@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server ./dist -c-1",
     "dev": "parcel src/index.html -p 8080 --https",
-    "build": "parcel build --public-url ./",
+    "build": "parcel build src/index.html",
     "test:ui:dev": "cypress open",
     "test:ui:headless": "cypress run",
     "prettier:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json\"",
