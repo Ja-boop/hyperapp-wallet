@@ -1,1 +1,3 @@
-export default interface IState {}
+export default interface IState {
+  viewFn: Function;
+}
