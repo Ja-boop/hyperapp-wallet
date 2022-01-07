@@ -1,16 +1,20 @@
 import albedo from "@albedo-link/intent";
 import IState from "../../ui/state/state";
 
-export const getPublicKey = (state: IState) => {
-  try {
-    albedo
-      .publicKey({
-        token: "FJbsCy6x99qIIJQAForNJTgEpOoFahKv0CnWTcH5qu8=",
-      })
-      .then((res) => {
-        return { ...state, publicKey: res.pubkey };
+const GotPublicKey = (state: IState, res: any) => ({
+  ...state,
+  wallet: "albedo",
+  publicKey: res.pubkey,
+});
+
+export const getPublicKey = (state: IState, publicKey: string) => [
+  { ...state, publicKey },
+
+  [
+    async (dispatch: Function) => {
+      await albedo.publicKey({}).then((res) => {
+        dispatch(GotPublicKey, res);
       });
-  } catch (e) {
-    console.log(e);
-  }
-};
+    },
+  ],
+];

@@ -16,13 +16,7 @@ app({
       ${state.wallet
         ? walletPage({ wallet: state.wallet, publicKey: state.publicKey })
         : html`<ul>
-            <button
-              onclick=${() => {
-                getPublicKey(state);
-              }}
-            >
-              Connect with Albedo
-            </button>
+            <button onclick=${getPublicKey}>Connect with Albedo</button>
             <button
               onclick=${() => ({
                 ...state,
