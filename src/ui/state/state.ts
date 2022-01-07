@@ -1,3 +1,4 @@
 export default interface IState {
-  viewFn: Function;
+  publicKey: string;
+  wallet: string;
 }
