@@ -1,5 +1,5 @@
 import html from "hyperlit";
 
-const albedoPage = html`<div>ALBEDO</div>`;
+const albedoPage = html`<div>ALBEDOS</div>`;
 
 export default albedoPage;
