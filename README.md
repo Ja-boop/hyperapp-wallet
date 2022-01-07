@@ -2,7 +2,7 @@
 
 ![cypress-tests](https://github.com/Ja-boop/hyperapp-wallet/actions/workflows/cypress-tests.yml/badge.svg)
 
-A simple wallet ap made in Stellar to connect with
+A simple wallet ap made in Stellar
 
 # Tech Stack
 
