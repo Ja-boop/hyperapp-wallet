@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/Ja-boop/hyperapp-wallet/issues"
   },
-  "homepage": "https://github.com/Ja-boop/hyperapp-wallet",
+  "homepage": "https://ja-boop.github.io/my-portfolio/",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
