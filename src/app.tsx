@@ -8,10 +8,11 @@ import { getPublicKeyFreighter } from "./wallets/freighter/freighter";
 
 import { getPublicKeyXBull } from "./wallets/xbull/xbull";
 
-
 const baseState: IState = {
   publicKey: "",
   wallet: "",
+  balance: "",
+  paymentHistory: [],
 };
 
 app({
