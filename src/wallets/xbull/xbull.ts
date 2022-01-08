@@ -14,6 +14,10 @@ export const inicializarXbull = (state: IState, publicKey: string) => {
     [
       async (dispatch: Function) => {
         try {
+          await xBullSDK.connect({
+            canRequestPublicKey: true,
+            canRequestSign: true,
+          });
           await window.xBullSDK.getPublicKey().then((res: any) => {
             dispatch(GotPublicKey, res);
           });
