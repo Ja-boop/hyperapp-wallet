@@ -1,7 +1,9 @@
 import { app } from "hyperapp";
 import html from "hyperlit";
 import IState from "./ui/state/state";
-import components from "./ui/components/component";
+import walletPage from "./ui/components/pages/wallet";
+import { getPublicKey } from "./wallets/albedo/albedo";
+import { getPublicKeyXBull } from "./wallets/xbull/xbull";
 
 const baseState: IState = {
   publicKey: "",
@@ -13,16 +15,9 @@ app({
   view: (state: IState) =>
     html`<div>
       ${state.wallet
-        ? components[state.wallet]
+        ? walletPage({ wallet: state.wallet, publicKey: state.publicKey })
         : html`<ul>
-            <button
-              onclick=${() => ({
-                ...state,
-                wallet: "albedo",
-              })}
-            >
-              Connect with Albedo
-            </button>
+            <button onclick=${getPublicKey}>Connect with Albedo</button>
             <button
               onclick=${() => ({
                 ...state,
@@ -31,14 +26,7 @@ app({
             >
               Connect with Freighter
             </button>
-            <button
-              onclick=${() => ({
-                ...state,
-                wallet: "xbull",
-              })}
-            >
-              Connect with xBull
-            </button>
+            <button onclick=${getPublicKeyXBull}>Connect with xBull</button>
           </ul>`}
     </div>`,
   node: document.getElementById("app")!,
