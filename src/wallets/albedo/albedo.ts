@@ -7,14 +7,18 @@ const GotPublicKey = (state: IState, res: any) => ({
   publicKey: res.pubkey,
 });
 
-export const getPublicKey = (state: IState, publicKey: string) => [
-  { ...state, publicKey },
+export const inicializarAlbedo = (state: IState, publicKey: string) => {
+  const getPublicKey = () => [
+    { ...state, publicKey },
 
-  [
-    async (dispatch: Function) => {
-      await albedo.publicKey({}).then((res) => {
-        dispatch(GotPublicKey, res);
-      });
-    },
-  ],
-];
+    [
+      async (dispatch: Function) => {
+        await albedo.publicKey({}).then((res) => {
+          dispatch(GotPublicKey, res);
+        });
+      },
+    ],
+  ];
+
+  return getPublicKey();
+};

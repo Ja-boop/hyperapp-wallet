@@ -7,14 +7,18 @@ const GotPublicKey = (state: IState, res: any) => ({
   publicKey: res,
 });
 
-export const getPublicKeyFreighter = (state: IState, publicKey: string) => [
-  { ...state, publicKey },
+export const inicializarFreighter = (state: IState, publicKey: string) => {
+  const getPublicKeyFreighter = () => [
+    { ...state, publicKey },
 
-  [
-    async (dispatch: Function) => {
-      await getPublicKey().then((res) => {
-        dispatch(GotPublicKey, res);
-      });
-    },
-  ],
-];
+    [
+      async (dispatch: Function) => {
+        await getPublicKey().then((res) => {
+          dispatch(GotPublicKey, res);
+        });
+      },
+    ],
+  ];
+
+  return getPublicKeyFreighter();
+};
