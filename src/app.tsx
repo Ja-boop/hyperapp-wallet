@@ -3,7 +3,11 @@ import html from "hyperlit";
 import IState from "./ui/state/state";
 import walletPage from "./ui/components/pages/wallet";
 import { getPublicKey } from "./wallets/albedo/albedo";
+
 import { getPublicKeyFreighter } from "./wallets/freighter/freighter";
+
+import { getPublicKeyXBull } from "./wallets/xbull/xbull";
+
 
 const baseState: IState = {
   publicKey: "",
@@ -21,14 +25,7 @@ app({
             <button onclick=${getPublicKeyFreighter}>
               Connect with Freighter
             </button>
-            <button
-              onclick=${() => ({
-                ...state,
-                wallet: "xbull",
-              })}
-            >
-              Connect with xBull
-            </button>
+            <button onclick=${getPublicKeyXBull}>Connect with xBull</button>
           </ul>`}
     </div>`,
   node: document.getElementById("app")!,
