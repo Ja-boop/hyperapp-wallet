@@ -20,7 +20,12 @@ app({
   view: (state: IState) =>
     html`<div>
       ${state.wallet
-        ? walletPage({ wallet: state.wallet, publicKey: state.publicKey })
+        ? walletPage({
+            wallet: state.wallet,
+            publicKey: state.publicKey,
+            balance: state.balance,
+            paymentHistory: state.paymentHistory,
+          })
         : html`<ul>
             <button onclick=${getPublicKey}>Connect with Albedo</button>
             <button onclick=${getPublicKeyFreighter}>
