@@ -7,14 +7,14 @@ const GotPublicKey = (state: IState, res: any) => ({
   publicKey: res,
 });
 
-export const inicializarXbull = (state: IState, publicKey: string) => {
+export const initXbull = (state: IState, publicKey: string) => {
   const getPublicKeyXBull = () => [
     { ...state, publicKey },
 
     [
       async (dispatch: Function) => {
         try {
-          await xBullSDK.connect({
+          await window.xBullSDK.connect({
             canRequestPublicKey: true,
             canRequestSign: true,
           });
@@ -22,7 +22,9 @@ export const inicializarXbull = (state: IState, publicKey: string) => {
             dispatch(GotPublicKey, res);
           });
         } catch (error) {
-          alert("You need to install the xBull extension");
+          alert(
+            "You need to install the xBull extension or log in the extension with your account"
+          );
         }
       },
     ],

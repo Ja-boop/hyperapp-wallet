@@ -2,11 +2,11 @@ import { app } from "hyperapp";
 import html from "hyperlit";
 import IState from "./ui/state/state";
 import walletPage from "./ui/components/pages/wallet";
-import { inicializarAlbedo } from "./wallets/albedo/albedo";
+import { initAlbedo } from "./wallets/albedo/albedo";
 
-import { inicializarFreighter } from "./wallets/freighter/freighter";
+import { initFreighter } from "./wallets/freighter/freighter";
 
-import { inicializarXbull } from "./wallets/xbull/xbull";
+import { initXbull } from "./wallets/xbull/xbull";
 
 const baseState: IState = {
   publicKey: "",
@@ -27,11 +27,9 @@ app({
             paymentHistory: state.paymentHistory,
           })
         : html`<ul>
-            <button onclick=${inicializarAlbedo}>Connect with Albedo</button>
-            <button onclick=${inicializarFreighter}>
-              Connect with Freighter
-            </button>
-            <button onclick=${inicializarXbull}>Connect with xBull</button>
+            <button onclick=${initAlbedo}>Connect with Albedo</button>
+            <button onclick=${initFreighter}>Connect with Freighter</button>
+            <button onclick=${initXbull}>Connect with xBull</button>
           </ul>`}
     </div>`,
   node: document.getElementById("app")!,

@@ -7,7 +7,7 @@ const GotPublicKey = (state: IState, res: any) => ({
   publicKey: res.pubkey,
 });
 
-export const inicializarAlbedo = (state: IState, publicKey: string) => {
+export const initAlbedo = (state: IState, publicKey: string) => {
   const getPublicKey = () => [
     { ...state, publicKey },
 

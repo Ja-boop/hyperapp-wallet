@@ -7,7 +7,7 @@ const GotPublicKey = (state: IState, res: any) => ({
   publicKey: res,
 });
 
-export const inicializarFreighter = (state: IState, publicKey: string) => {
+export const initFreighter = (state: IState, publicKey: string) => {
   const getPublicKeyFreighter = () => [
     { ...state, publicKey },
 
