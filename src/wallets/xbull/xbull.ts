@@ -1,11 +1,22 @@
 import IState from "../../ui/state/state";
 declare const window: any;
+import { buildTx } from "../../operations/txOperation/buildTxOperation";
 
 const GotPublicKey = (state: IState, res: any) => ({
   ...state,
   wallet: "xbull",
   publicKey: res,
 });
+
+const destination = "GAVPIQ5RZCTNXWB5257PEQEZUBUKE37RQ4ZGDCNZPTKK3KLXGVIP2DBJ";
+
+export const signXbull = async (state: IState) => {
+  const txXDR = await buildTx(state, destination);
+
+  const signedTx = await window.xBullSDK.signXDR(txXDR.toXDR());
+
+  return signedTx;
+};
 
 export const initXbull = (state: IState, publicKey: string) => {
   const getPublicKeyXBull = () => [

@@ -8,6 +8,8 @@ import { initFreighter } from "./wallets/freighter/freighter";
 
 import { initXbull } from "./wallets/xbull/xbull";
 
+import { submitTx } from "./operations/txOperation/submitOperation";
+
 const baseState: IState = {
   publicKey: "",
   wallet: "",
@@ -25,12 +27,13 @@ app({
             publicKey: state.publicKey,
             balance: state.balance,
             paymentHistory: state.paymentHistory,
+            paymentFunction: submitTx,
           })
         : html`<ul>
             <button onclick=${initAlbedo}>Connect with Albedo</button>
             <button onclick=${initFreighter}>Connect with Freighter</button>
             <button onclick=${initXbull}>Connect with xBull</button>
           </ul>`}
-    </div>`,
+    </div> `,
   node: document.getElementById("app")!,
 });
