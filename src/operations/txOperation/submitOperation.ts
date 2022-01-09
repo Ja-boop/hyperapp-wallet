@@ -9,20 +9,14 @@ import { signFreighter } from "../../wallets/freighter/freighter";
 export const submitTx = async (state: IState) => {
   let signedXdr;
 
-  switch (state.wallet) {
-    case (state.wallet = "freighter"):
-      signedXdr = await signFreighter(state);
-      break;
-    case (state.wallet = "albedo"):
-      signedXdr = await signAlbedo(state);
-      break;
-    case (state.wallet = "xbull"):
-      signedXdr = await signXbull(state);
-    default:
-      state.wallet = "";
-  }
+  state.wallet === "freighter" ? (signedXdr = await signFreighter(state)) : "";
+  state.wallet === "albedo" ? (signedXdr = await signAlbedo(state)) : "";
+  state.wallet === "xbull" ? (signedXdr = await signXbull(state)) : "";
 
   const newTx = StellarSDK.TransactionBuilder.fromXDR(signedXdr, "TESTNET");
 
-  server.submitTransaction(newTx).then((res) => console.log(res));
+  const result = server
+    .submitTransaction(newTx)
+    .then((res) => console.log(res));
+  return result;
 };

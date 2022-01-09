@@ -1,4 +1,4 @@
-export default interface IPayment {
+export default interface ITxHistory {
   id: number;
   source_account: string;
   type: string;
