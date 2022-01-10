@@ -1,6 +1,7 @@
 import html from "hyperlit";
 import ITxHistory from "../../state/payment";
 import { showHistory } from "../../../wallets/freighter/freighter";
+import { renderBalanceInfo } from "../../actions/actions";
 
 const walletPage = (props: {
   wallet: string;
@@ -8,10 +9,12 @@ const walletPage = (props: {
   balance: string;
   paymentHistory: ITxHistory;
   paymentFunction: Function;
-}) => html`<div>${props.wallet} publicKey: ${props.publicKey}</div>
-  <div>${props.balance}</div>
+  renderBalanceInfo: Function;
+}) => html` <div>${props.wallet} publicKey: ${props.publicKey}</div>
   <button onclick=${props.paymentFunction}>Make a Payment</button>
   <button onclick=${showHistory}>Show Transaction History</button>
+  <button onclick=${renderBalanceInfo}>View your balance</button>
+  <div>Your balance is ${props.balance} XLM</div>
   <div>
     <h1>Transaction History</h1>
     <p>Transaction Type: ${props.paymentHistory.type}</p>

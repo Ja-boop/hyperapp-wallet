@@ -1,7 +1,6 @@
 import IState from "../../ui/state/state";
 import { buildTx } from "../../operations/txOperation/buildTxOperation";
 import { paymentWatcherOperation } from "../../operations/paymentWatcherOperation/paymentWatcherOperation";
-
 declare const window: any;
 
 const GotPublicKey = (state: IState, res: any) => ({
@@ -41,12 +40,12 @@ export const initXbull = (state: IState, publicKey: string) => {
         } catch (error) {
           alert(
             "You need to install the xBull extension or log in the extension with your account"
-          );
+          ),
+            console.log(error);
         }
       },
     ],
   ];
-
   return getPublicKeyXBull();
 };
 
